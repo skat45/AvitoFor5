@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Регистрация</title>
+	<meta charset="utf-8">
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='elephant.ico')}}" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid"></div>
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<a class="btn btn-outline-info btn-block" href="/">Назад</a>
+			</div>
+		</div>
+		<br><br><br>
+		<h1 align="center">Регистрация</h1><br>
+		<div style="text-align: center; font-size: 0.8em;">Введите данные, необходимые для регистрации. Остальное сможете добавить в личном кабинете.</div><br>
+		{% with messages = get_flashed_messages() %}
+   			{% if messages %}
+      			{% for message in messages %}
+         			<h5 align="center" style="color: red;">{{ message }}</h5>
+      			{% endfor %}
+   			{% endif %}
+		{% endwith %}
+		<form class="my-2 my-lg-0" method="POST" action="/register">
+    		<input class="form-control mr-sm-2" type="text" placeholder="Логин/имя" id="login" name="login"><br>
+    		<input class="form-control mr-sm-2" type="text" placeholder="Комната" id="room" name="room"><br>
+    		<input class="form-control mr-sm-2" type="password" placeholder="Пароль" id="password" name="password"><br>
+    		<button class="btn btn-block btn-info my-2 my-sm-0" type="submit" value="Login">ГОУ</button>
+    	</form>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+</body>
+</html>

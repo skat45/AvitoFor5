@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Барахолка 5 общежитие</title>
+    <!--<link rel="shortcut icon" href="{{ url_for('static', filename='elephant.ico')}}" type="image/x-icon">-->
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background: repeating-linear-gradient( 0deg, #6c757d1f, #6c757d1f 10px, #f8f9fa 10px, #f8f9fa 20px );">
+	<nav style="position: fixed; width: 100%; z-index: 2;" class="navbar navbar-expand-lg navbar-dark bg-info">
+	<a class="navbar-brand" href="/">Барахолка</a>
+	<ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/new_advertisement">Разместить объявление</a>
+      </li>
+    </ul>  
+
+  <div class="collapse navbar-collapse">
+    <div class="navbar-nav" style="margin-right: 0; margin-left: auto;">
+    	<div class="navbar-brand">{{ name }}</div>
+       <a class="nav-link" href="/logout">Выход</a>
+     </div>
+  </div>
+</nav>	<div class="navbar navbar-expand-lg"><a class="navbar-brand">O</a></div> <br>
+
+<div class="container border rounded bg-light" align="center" style="text-align: center;">
+	<br>
+	<h3>Редактирование</h3>
+	<br>
+	<form method="post" action="/editing">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h6>Логин/имя</h6>
+				<input type="text" name="login" class="form-control" value="{{ name }}">
+				<br>
+
+				<h6>Комната</h6>
+				<input type="text" name="room" class="form-control" value="{{ room }}">
+				<br>
+
+				<h6>Ссылка на VK</h6>
+				<input type="text" name="vk" class="form-control"  value="{{ vk }}">
+				<br>
+
+				<h6>Ссылка на Telegram</h6>
+				<input type="text" name="tg" class="form-control" value="{{ tg }}">
+				<br>
+
+				<h6>Номер телефона</h6>
+				<input type="text" name="mobile" class="form-control"  value="{{ mobile }}">
+				<br>
+
+				<h6>Новый пароль можно вписать сюда</h6>
+				<input type="text" name="password" class="form-control">
+				<br>
+
+				{% with messages = get_flashed_messages() %}
+   					{% if messages %}
+      					{% for message in messages %}
+         					<h5 align="center" style="color: red;">{{ message }}</h5>
+      					{% endfor %}
+   					{% endif %}
+				{% endwith %}
+
+				<input type="submit" class="btn-block btn btn-success" value="Сохранить">
+				<br>
+			</div>
+		</div>
+	</form>
+</div>
+<br>
+
+</body>
+</html>

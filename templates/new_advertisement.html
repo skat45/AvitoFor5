@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Барахолка 5 общежитие</title>
+    <!--<link rel="shortcut icon" href="{{ url_for('static', filename='elephant.ico')}}" type="image/x-icon">-->
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background: repeating-linear-gradient( 0deg, #6c757d1f, #6c757d1f 10px, #f8f9fa 10px, #f8f9fa 20px );">
+	<nav style="position: fixed; width: 100%; z-index: 2;" class="navbar navbar-expand-lg navbar-dark bg-info">
+	<a class="navbar-brand" href="/">Барахолка</a>
+  <div class="collapse navbar-collapse">
+    <div class="navbar-nav" style="margin-right: 0; margin-left: auto;">
+    	<div class="navbar-brand">{{ name }}</div>
+    	<a class="nav-link" href="/lk">Редактирование профиля</a>
+       <a class="nav-link" href="/logout">Выход</a>
+     </div>
+  </div>
+</nav>	<div class="navbar navbar-expand-lg"><a class="navbar-brand">O</a></div> <br>
+
+<div class="container border rounded bg-light" align="center" style="text-align: center;">
+	<br>
+	<h3>Новое объявление</h3>
+	<br>
+	<form method="post" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h6>Что продаёте?</h6>
+				<input type="text" name="name" class="form-control">
+				<hr>
+				<h6>Цена:</h6>
+				
+					<div class="row" style="text-align: left;">
+						<div class="col-md-3">
+							<div class="form-check">
+  								<input class="form-check-input" value="rub" type="radio" name="cost_type" id="rubles_rad">
+  								<label class="form-check-label" for="rubles_rad">В рублях</label>
+							</div><br>
+							<div class="form-check">
+  								<input class="form-check-input"  value="free" type="radio" name="cost_type" id="free_rad" checked>
+  								<label class="form-check-label" for="free_rad">Бесплатно</label>
+							</div><br>
+							<div class="form-check">
+  								<input class="form-check-input"  value="diff" type="radio" name="cost_type" id="dif_rad">
+  								<label class="form-check-label" for="dif_rad"> Другое</label>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<input class="form-control" type="number" name="cost_in_rubles">
+							<br><br>
+							<input class="form-control" type="text" name="diff_cost">
+						</div>
+					</div>
+					<hr>
+					<h6>Добавьте фото</h6>
+    				<input type="file" name="file"  accept="image/png, image/jpeg, image/jpg, image/gif">
+					<hr>
+					<h6>Дополнительное описание:</h6>
+					<textarea style="min-height: 10em;" class="form-control" name="description"></textarea>
+					<br>
+			
+					
+					
+				
+				{% with messages = get_flashed_messages() %}
+   					{% if messages %}
+      					{% for message in messages %}
+         					<h5 align="center" style="color: red;">{{ message }}</h5>
+      					{% endfor %}
+   					{% endif %}
+				{% endwith %}
+
+				<input type="submit" class="btn-block btn btn-success" value="Разместить">
+				<br>
+			</div>
+		</div>
+	</form>
+</div>
+<br>
+
+</body>
+</html>
